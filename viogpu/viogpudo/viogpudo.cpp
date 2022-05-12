@@ -600,7 +600,7 @@ NTSTATUS VioGpuDod::QueryVidPnHWCapability(_Inout_ DXGKARG_QUERYVIDPNHWCAPABILIT
     pVidPnHWCaps->VidPnHWCaps.DriverScaling = 0;
     pVidPnHWCaps->VidPnHWCaps.DriverCloning = 0;
     pVidPnHWCaps->VidPnHWCaps.DriverColorConvert = 1;
-    pVidPnHWCaps->VidPnHWCaps.DriverLinkedAdapaterOutput = 0;
+    pVidPnHWCaps->VidPnHWCaps.DriverLinkedAdapterOutput = 0;
     pVidPnHWCaps->VidPnHWCaps.DriverRemoteDisplay = 0;
     pVidPnHWCaps->VidPnHWCaps.Reserved = 0;
 
