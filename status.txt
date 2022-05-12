@@ -7,7 +7,7 @@ BZ#1821560: [viostor] driver does not return correct serial number length.
 
 New Features:
 
-[vioscsi] introduce the registry key to make munber of physical breakes adjustable
+[vioscsi] introduce the registry key to make munber of physical breaks adjustable
 
 Date    19 Feb 2020
 tag     mm200
@@ -213,7 +213,7 @@ viostor: move sgl to SRB extension
 viostor: redesign vq lock/unlock routines
 NetKVM: Log interrupt vector to CPU mapping
 NetKVM: Set AffinityPolicy to IrqPolicySpecifiedProcessors
-NetKVM: Correctly assign vecotrs to CPUs
+NetKVM: Correctly assign vectors to CPUs
 
 
 Date    26 Apr 2018
@@ -228,7 +228,7 @@ Bugs:
 BZ 1539256: [vioscsi] to support ACK of VIRTIO_F_IOMMU_PLATFORM
 BZ 1530210: [viostor] to support ACK of VIRTIO_F_IOMMU_PLATFORM
 BZ 1549587: [NetKVM] to support ACK of VIRTIO_F_IOMMU_PLATFORM
-BZ 1549577: [virtiovib] Add VIRTIO_F_IOMMU_PLATFORM feature bit definition
+BZ 1549577: [virtiolib] Add VIRTIO_F_IOMMU_PLATFORM feature bit definition
 
 
 New Features:
@@ -328,7 +328,7 @@ Date    01 Jun 2017
 Fixed bugs:
 
 BZ 1456403: [NetKVM] Implement MTU report feature of the virtio-net device
-BZ 1455488: [vioser][ovmf] Guest occured BSOD when hotunplug virtio-serial-pci.
+BZ 1455488: [vioser][ovmf] Guest occurred BSOD when hotunplug virtio-serial-pci.
 
 
 Date    22 May 2017
@@ -386,7 +386,7 @@ tag     mm152
 Fixed bugs:
 
 BZ 1369353: [balloon] backport available memory stat support
-BZ 1419785: [balloon] Guest WIN8-32 occured BSOD in job "DF - PNP Stop (Rebalance) Device Test (Certification)"
+BZ 1419785: [balloon] Guest WIN8-32 occurred BSOD in job "DF - PNP Stop (Rebalance) Device Test (Certification)"
 
 New Features:
 pvpanic: Add IOCTL_GET_CRASH_DUMP_HEADER
@@ -764,7 +764,7 @@ tag     mm115
 
 Fixed bugs:
 
-BZ 1151912: RNG fix whql failure due to registeration error.
+BZ 1151912: RNG fix whql failure due to registration error.
 BZ 1154419: NetKVM  Memory corruption in RSS->queue mapping.
 
 RNG: replaced message box with setup api logging.
@@ -839,7 +839,7 @@ Fixed bugs:
 BZ 1066808: balloon fix old stats rema
 BZ 1081436: viorng  fix bsod after resuming
 BZ 1116573: viorng  use wdf 1.9 for old
-BZ  950611: NetKvm  Disable RSC until host suppor
+BZ  950611: NetKvm  Disable RSC until host support
 
 
 Date    08 Jul 2014
@@ -848,7 +848,7 @@ tag     mm107
 
 Fixed bugs:
 
-BZ 1096505: NetKVM Cosmetic fixs - tab removed with spaces
+BZ 1096505: NetKVM Cosmetic fixes - tab removed with spaces
 BZ 1112712: NetKVM Initialize CVirtQueue first before making internal calculati
 BZ 1051886: NetKVM  Fix linker options for Vista\Windows Server 2008.
 BZ 1109027: NetKVM  Fix empty friendly name if only one adapter is present
@@ -874,7 +874,7 @@ Fixed bugs:
 
 Bug 1096505 [netkvm] packet submission refactoring
 Bug 1100308 [netkvm] Fixing DPC suspend flag race condition
-Bug 1054640 [netkvm] On cotext destruction, return to the unused queue buffers,
+Bug 1054640 [netkvm] On context destruction, return to the unused queue buffers,
                      retained in per-processor queue but not submitted to the upper layer
 
 
@@ -1070,7 +1070,7 @@ Fixed bugs:
 BZ#889941 - [virtio-win][scsi] virtio_scsi driver performs bad during large buffers transfer
 BZ#950611 Guest offloads configuration via control queue
 BZ#978296 Incorrect link state indications in PM_PowerStateTransition
-BZ#982940 - Remove old hack for 1G adapter that internaly keeps the speed as 1001
+BZ#982940 - Remove old hack for 1G adapter that internally keeps the speed as 1001
 
 New Features:
 MSI interrupts support for viocsi.
@@ -1081,7 +1081,7 @@ tag     mm85
 
 Fixed bugs:
 
-BZ#972310 - in case if the interrupt and the device was not initiali
+BZ#972310 - in case if the interrupt and the device was not initialized
 
 Date    3 Jun 2013
 repo    git://git.engineering.redhat.com/users/vrozenfe/internal-kvm-guest-drivers-windows/.git
@@ -1164,7 +1164,7 @@ repo    git://git.engineering.redhat.com/users/vrozenfe/internal-kvm-guest-drive
 tag     mm77
 
 Fixed bugs:
-[NetKVM] BZ#904808 Initlal RSC implementation
+[NetKVM] BZ#904808 Initial RSC implementation
 
 
 Date    18 Mar 2013
@@ -1306,7 +1306,7 @@ tag     mm61
 Fixed bugs:
 Bug 837758 - Disable virtio serial driver from device
     manager hit BSOD After send data from host and guest.
-Bug 842961 [Job Id 1710]BSOD occurs dueing running
+Bug 842961 [Job Id 1710]BSOD occurs while running
     "WDF Fault injection Logo Testing" job.
 Bug 824814 - [virtio-win][viostor]Online enlarging data
     image size does not work.
@@ -1319,7 +1319,7 @@ tag     mm60
 
 Fixed bugs:
 [NetKVM] BZ #859882 - Fixing performance with current checksum offload settings. If Windows send 
-	an IP packet with 0 pachet lenth in offload scenarios - the driver will populate the 
+	an IP packet with 0 packet lenth in offload scenarios - the driver will populate the 
 	length field with packet field.
 
 
@@ -1362,9 +1362,9 @@ BZ #843325 - [virtio-win][balloon]Guest memory can not continue evicting after e
 BZ #837324 - viostor reports support for FUA, but does not implement it.
 
 BZ #806223 - [virtio-win][serial] guest BSOD when doing s3 while virtio-serial in use.
-BZ #714908 - [virtio-win][serial] virtio-serial is disfunctiona after S3
+BZ #714908 - [virtio-win][serial] virtio-serial is dysfunctional after S3
 BZ #814896 - [virtio-win][serial] virtio-serial does not work after s4 in win7-32/64 bit guests
-BZ #823818 - [virtio-win][compatibilty]Guest freeze After terminating the virtserialport receiving 
+BZ #823818 - [virtio-win][compatibility]Guest freeze After terminating the virtserialport receiving 
              side in the host
 BZ #819412 - [virtio-win][serial]qemu complains "Unexpected port id 1 for device virtio-serial0.0"
              when hotunplug serial while RHEV-Agent service running in the guest
@@ -1376,7 +1376,7 @@ tag     mm55
 Fixed bugs:
 BZ #838010 Fixing static code analysis tools
     errors for Balloon.
-BZ:834179 - Reverting previos fix and aplying correct
+BZ:834179 - Reverting previous fix and applying correct
     padding on RX path that is needed due to guest to guest transfer of small
     packets.
 
@@ -1395,7 +1395,7 @@ Bz:837321 Report guest FLUSH (WCE) feature
 Bug 819457 - windows 2k8r2sp1 guests hang after running over
     10 days in a stressed host
 
-Bug 823818 - [virtio-win][compatibilty]Guest freeze After terminating
+Bug 823818 - [virtio-win][compatibility]Guest freeze After terminating
     the virtserialport receiving side in the host
 Bug 840932 - BSOD in RHEV 3 on Windows 7 guest, Bugcheck code 0x9F
 
@@ -1403,7 +1403,7 @@ Date    20 July 2012
 repo    git://git.engineering.redhat.com/users/vrozenfe/internal-kvm-guest-drivers-windows/.git
 tag     mm53
 
-Experemental - Win8 support for VirtIO, NetKvm, viostor, and vioscsi progects.
+Experimental - Win8 support for VirtIO, NetKvm, viostor, and vioscsi projects.
 
 
 Date    3 July 2012
@@ -1412,7 +1412,7 @@ tag     mm52
 
 Fixed bugs:
 
-Bug 800752 - Fixing syncronyzation between DPC and Read.
+Bug 800752 - Fixing synchronization between DPC and Read.
 
 Date    13 June 2012
 repo    git://git.engineering.redhat.com/users/vrozenfe/internal-kvm-guest-drivers-windows/.git
@@ -1423,7 +1423,7 @@ Fixed bugs:
 Bug 828275 - Implement and test control queue in virtio-simulator environment.
 Bug 828275 - Initial implementation of RX filtering using QEMU
 
-Bug 768795 - BSOD when excercising Balloon Driver
+Bug 768795 - BSOD when exercising Balloon Driver
 Bug 816452 - Uninstall balloon driver from Device Manager leads to BSOD after changing balloon 
              value in monitor.
 Bug 803633 - balloon does not work after s3 or s4
@@ -1475,7 +1475,7 @@ Fixed bugs:
 Bug 799248 - [netkvm]Add a space between "RedHat" in netkvm,sys Product name
 Bug 713643 - backport checksum optimization for virtio_net
 Bug 770499 - Press 'i' cause vioser-test stop working
-Bug 799264 - WHQL][Block]BSOD happened in job "CHOAS-Concurrent Hardware And OS Test"
+Bug 799264 - WHQL][Block]BSOD happened in job "CHAOS-Concurrent Hardware And OS Test"
 Bug 799190 - [WHQL][Block]Job "Sleep Stress with IO" and Common Scenario Stress with IO" 
              stopped with prompt error on win2k8-R2/win2k8/win7.
 Bug 799182 - [WHQL][Block]Job of "Sleep Stress with IO" and Common Scenario Stress with IO" 
@@ -1520,7 +1520,7 @@ Fixed bugs:
 Bug 713130 - event index support in virtio and vhost-net
 Bug 713643 - backport checksum optimization for virtio_net
 Bug 753723 - Backport serial number support for virtio-blk devices
-Bug 714908 - virtio-serial is disfunctional after S3
+Bug 714908 - virtio-serial is dysfunctional after S3
 
 Date    24 November 2011
 repo    git://git.engineering.redhat.com/users/vrozenfe/internal-kvm-guest-drivers-windows/.git

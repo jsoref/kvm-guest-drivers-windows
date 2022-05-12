@@ -507,7 +507,7 @@ NTSTATUS VioGpuDod::PresentDisplayOnly(_In_ CONST DXGKARG_PRESENT_DISPLAYONLY* p
     if ((m_MonitorPowerState > PowerDeviceD0) ||
         (m_CurrentModes[pPresentDisplayOnly->VidPnSourceId].Flags.SourceNotVisible))
     {
-        DbgPrint(TRACE_LEVEL_ERROR, ("<--- %s Source is not visiable\n", __FUNCTION__));
+        DbgPrint(TRACE_LEVEL_ERROR, ("<--- %s Source is not visible\n", __FUNCTION__));
         return STATUS_SUCCESS;
     }
 
@@ -600,7 +600,7 @@ NTSTATUS VioGpuDod::QueryVidPnHWCapability(_Inout_ DXGKARG_QUERYVIDPNHWCAPABILIT
     pVidPnHWCaps->VidPnHWCaps.DriverScaling = 0;
     pVidPnHWCaps->VidPnHWCaps.DriverCloning = 0;
     pVidPnHWCaps->VidPnHWCaps.DriverColorConvert = 1;
-    pVidPnHWCaps->VidPnHWCaps.DriverLinkedAdapaterOutput = 0;
+    pVidPnHWCaps->VidPnHWCaps.DriverLinkedAdapterOutput = 0;
     pVidPnHWCaps->VidPnHWCaps.DriverRemoteDisplay = 0;
     pVidPnHWCaps->VidPnHWCaps.Reserved = 0;
 
@@ -793,7 +793,7 @@ NTSTATUS VioGpuDod::AddSingleTargetMode(_In_ CONST DXGK_VIDPNTARGETMODESET_INTER
         pVidPnTargetModeInfo->VideoSignalInfo.ActiveSize = pVidPnTargetModeInfo->VideoSignalInfo.TotalSize;
         BuildVideoSignalInfo(&pVidPnTargetModeInfo->VideoSignalInfo, pModeInfo);
 
-        pVidPnTargetModeInfo->Preference = D3DKMDT_MP_NOTPREFERRED; // TODO: another logic for prefferred mode. Maybe the pinned source mode
+        pVidPnTargetModeInfo->Preference = D3DKMDT_MP_NOTPREFERRED; // TODO: another logic for preferred mode. Maybe the pinned source mode
 
         Status = pVidPnTargetModeSetInterface->pfnAddMode(hVidPnTargetModeSet, pVidPnTargetModeInfo);
         if (!NT_SUCCESS(Status))
@@ -1396,7 +1396,7 @@ NTSTATUS VioGpuDod::CommitVidPn(_In_ CONST DXGKARG_COMMITVIDPN* CONST pCommitVid
         Status = pVidPnTopologyInterface->pfnReleasePathInfo(hVidPnTopology, pVidPnPresentPath);
         if (!NT_SUCCESS(Status))
         {
-            DbgPrint(TRACE_LEVEL_ERROR, ("pfnReleasePathInfo failed with Status = 0x%X, hVidPnTopoogy = 0x%llu, pVidPnPresentPath = %p\n",
+            DbgPrint(TRACE_LEVEL_ERROR, ("pfnReleasePathInfo failed with Status = 0x%X, hVidPnTopology = 0x%llu, pVidPnPresentPath = %p\n",
                 Status, LONG_PTR(hVidPnTopology), pVidPnPresentPath));
             goto CommitVidPnExit;
         }
@@ -2164,15 +2164,15 @@ BOOLEAN VioGpuAdapter::AckFeature(UINT64 Feature)
 
 static UCHAR g_gpu_edid[EDID_V1_BLOCK_SIZE] = {
     0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF ,0xFF, 0x00, // Header
-    0x49, 0x14,                                     // Manufacturef Id
-    0x34, 0x12,                                     // Manufacturef product code
+    0x49, 0x14,                                     // Manufacturer Id
+    0x34, 0x12,                                     // Manufacturer product code
     0x00, 0x00, 0x00, 0x00,                         // serial number
     0xff, 0x1d,                                     // year of manufacture
     0x01,                                           // EDID version
     0x04,                                           // EDID revision
     0xa3,                                           // VideoInputDefinition digital, 8-bit, HDMI
     0x00,                                           //MaximumHorizontalImageSize
-    0x00,                                           //MaximumVerticallImageSize
+    0x00,                                           //MaximumVerticalImageSize
     0x78,                                           //DisplayTransferCharacteristics
     0x22,                                           //FeatureSupport
     0xEE, 0x95, 0xA3, 0x54, 0x4C,                   //ColorCharacteristics
@@ -2676,7 +2676,7 @@ NTSTATUS VioGpuAdapter::SetPointerPosition(_In_ CONST DXGKARG_SETPOINTERPOSITION
             (UINT)pSetPointerPosition->Y > pModeCur->SrcModeHeight ||
             pSetPointerPosition->X < 0 ||
             pSetPointerPosition->Y < 0) {
-            DbgPrint(TRACE_LEVEL_VERBOSE, ("---> %s (%d - %d) Visiable = %d Value = %x VidPnSourceId = %d\n",
+            DbgPrint(TRACE_LEVEL_VERBOSE, ("---> %s (%d - %d) Visible = %d Value = %x VidPnSourceId = %d\n",
                 __FUNCTION__,
                 pSetPointerPosition->X,
                 pSetPointerPosition->Y,
@@ -2687,7 +2687,7 @@ NTSTATUS VioGpuAdapter::SetPointerPosition(_In_ CONST DXGKARG_SETPOINTERPOSITION
             crsr->pos.y = 0;
         }
         else {
-            DbgPrint(TRACE_LEVEL_VERBOSE, ("---> %s (%d - %d) Visiable = %d Value = %x VidPnSourceId = %d posX = %d, psY = %d\n",
+            DbgPrint(TRACE_LEVEL_VERBOSE, ("---> %s (%d - %d) Visible = %d Value = %x VidPnSourceId = %d posX = %d, psY = %d\n",
                 __FUNCTION__,
                 pSetPointerPosition->X,
                 pSetPointerPosition->Y,
@@ -2799,7 +2799,7 @@ void VioGpuAdapter::FixEdid(void)
     PUCHAR buf = GetEdidData(0);;
     PEDID_DATA_V1 pdata = (PEDID_DATA_V1)buf;
     pdata->MaximumHorizontalImageSize[0] = 0;
-    pdata->MaximumVerticallImageSize[0] = 0;
+    pdata->MaximumVerticalImageSize[0] = 0;
     pdata->ExtensionFlag[0] = 0;
     pdata->Checksum[0] = 0;
     for (ULONG i = 0; i < EDID_V1_BLOCK_SIZE; i++) {

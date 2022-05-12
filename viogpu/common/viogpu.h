@@ -321,7 +321,7 @@ typedef union _VIDEO_INPUT_DEFINITION {
     typedef struct _ANALOG {
         UCHAR VSyncSerration           : 1;
         UCHAR GreenVideoSync           : 1;
-        UCHAR VompositeSync            : 1;
+        UCHAR CompositeSync            : 1;
         UCHAR SeparateSync             : 1;
         UCHAR BlankToBlackSetup        : 1;
         UCHAR SignalLevelStandard      : 2;
@@ -384,7 +384,7 @@ typedef struct _EDID_DATA_V1 {
     UCHAR Revision[1];
     VIDEO_INPUT_DEFINITION VideoInputDefinition[1];
     UCHAR  MaximumHorizontalImageSize[1];
-    UCHAR  MaximumVerticallImageSize[1];
+    UCHAR  MaximumVerticalImageSize[1];
     UCHAR  DisplayTransferCharacteristics[1];
     FEATURES_SUPPORT FeaturesSupport;
     COLOR_CHARACTERISTICS ColorCharacteristics;

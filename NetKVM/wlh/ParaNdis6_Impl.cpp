@@ -173,7 +173,7 @@ static VOID MiniportDisableInterruptEx(IN PVOID MiniportInterruptContext)
     DEBUG_ENTRY(0);
     PARANDIS_ADAPTER *pContext = (PARANDIS_ADAPTER *)MiniportInterruptContext;
 
-    /* TODO - make sure that interrups are not reenabled by the DPC callback*/
+    /* TODO - make sure that interrupts are not reenabled by the DPC callback*/
     for (UINT i = 0; i < pContext->nPathBundles; i++)
     {
         pContext->pPathBundles[i].txPath.DisableInterrupts();
@@ -257,7 +257,7 @@ static BOOLEAN MiniportInterrupt(
 }
 
 // This procedure must work the same way as
-// ParaNdis_ConfigureMSIXVectors when spreads vectors over RX/TX/CX pathes.
+// ParaNdis_ConfigureMSIXVectors when spreads vectors over RX/TX/CX paths.
 // Returns respective TX or RX path if exists, then CX path if exists
 // (i.e. returns CX path only if it has dedicated vector)
 // otherwise (unlikely) returns NULL
@@ -1081,7 +1081,7 @@ BOOLEAN ParaNdis_IsTxRxPossible(PARANDIS_ADAPTER *pContext)
 /**********************************************************
 NDIS required handler for run-time allocation of scatter-gather list
 Parameters:
-pSGL - scatter-hather list of elements (possible NULL when called directly)
+pSGL - scatter-gather list of elements (possible NULL when called directly)
 Context - (tNetBufferEntry *) for specific NET_BUFFER in NBL
 Called on DPC (DDK claims it)
 ***********************************************************/

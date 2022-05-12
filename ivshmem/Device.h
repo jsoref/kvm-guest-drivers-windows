@@ -39,7 +39,7 @@ typedef struct _DEVICE_CONTEXT
     PIVSHMEMDeviceRegisters devRegisters; // the device registers (BAR0)
 
     MM_PHYSICAL_ADDRESS_LIST   shmemAddr;               // physical address of the shared memory (BAR2)
-    PMDL                       shmemMDL;                // memory discriptor list of the shared memory
+    PMDL                       shmemMDL;                // memory descriptor list of the shared memory
     PVOID                      shmemMap;                // memory mapping of the shared memory
     WDFFILEOBJECT              owner;                   // the file object that currently owns the mapping
     UINT16                     interruptCount;          // the number of interrupt entries allocated
@@ -49,7 +49,7 @@ typedef struct _DEVICE_CONTEXT
 
     KSPIN_LOCK                 eventListLock;           // spinlock for the below event list
     IVSHMEMEventListEntry      eventBuffer[MAX_EVENTS]; // buffer of pre-allocated events
-    UINT16                     eventBufferUsed;         // number of events currenty in use
+    UINT16                     eventBufferUsed;         // number of events currently in use
     LIST_ENTRY                 eventList;               // pending events to fire
 }
 DEVICE_CONTEXT, *PDEVICE_CONTEXT;
